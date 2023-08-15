@@ -1,0 +1,340 @@
+{
+	"incarnons_list": {
+		"braton": {
+			"name": "braton incarnon genesis",
+			"weapon_upgrades": [{
+				"weapon": "braton",
+				"upgrades": [{
+						"tier": 2,
+						"options": [{
+								"name": "Daring Reverie",
+								"effects": [{
+										"damage": 24
+									},
+									{
+										"damage": 30,
+										"ammo_efficiency": 0.5,
+										"condition_or_effect": "With channeled ability active"
+									}
+								]
+							},
+							{
+								"name": "Munitions Grit",
+								"effects": [{
+										"damage": 14
+									},
+									{
+										"damage_bonus": 0.6,
+										"multishot_bonus": 0.2,
+										"condition_or_effect": "Multishot consumes ammo from ammo pool"
+									}
+								]
+							}
+						]
+					},
+					{
+						"tier": 3,
+						"options": [{
+								"name": "Mercenary Chamber",
+								"effects": [{
+									"max_ammo": 675
+								}]
+							},
+							{
+								"name": "Void's Guidance",
+								"effects": [{
+										"accuracy_bonus": 0.6
+									},
+									{
+										"recoil_reduction": 0.6
+									}
+								]
+							},
+							{
+								"name": "Gunsmoke Pick Up",
+								"effects": [{
+									"condition_or_effect": "Restore ammo on punch through hit",
+									"condition_chance": 0.2,
+									"ammo_restore": 0.1
+								}]
+							}
+						]
+					},
+					{
+						"tier": 4,
+						"options": [{
+								"name": "Critical Parallel",
+								"effects": [{
+										"critical_chance": 0.16
+									},
+									{
+										"critical_damage": 0.4
+									}
+								]
+							},
+							{
+								"name": "Prelude of Might",
+								"effects": [{
+									"condition_or_effect": "Increase critical damage when critical chance is below 50%",
+									"critical_damage": 3.4
+								}]
+							},
+							{
+								"name": "Survivor's Edge",
+								"effects": [{
+										"critical_chance": 0.12
+									},
+									{
+										"status_chance": 0.12
+									}
+								]
+							}
+						]
+					}
+				]
+			}]
+		}
+	},
+	"weapons_list": [{
+			"name": "Braton",
+			"family": "braton",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 24,
+						"fire_rate": 8.75,
+						"reload_time": 2,
+						"critical_chance": 0.12,
+						"critical_damage": 1.6,
+						"status_chance": 0.06,
+						"multishot": 1,
+						"max_ammo": 540,
+						"magazine_size": 45
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 50,
+						"fire_rate": 5,
+						"critical_chance": 0.3,
+						"critical_damage": 3,
+						"status_chance": 0.12,
+						"multishot": 1
+					}
+				},
+				"incarnon_form_aoe": {
+					"name": "Incarnon Form AoE",
+					"stats": {
+						"damage": 50
+					}
+				}
+			}
+		},
+		{
+			"name": "Mk-1 Braton",
+			"family": "braton",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 18,
+						"fire_rate": 7.5,
+						"reload_time": 2,
+						"critical_chance": 0.08,
+						"critical_damage": 1.5,
+						"status_chance": 0.05,
+						"multishot": 1,
+						"max_ammo": 540,
+						"magazine_size": 60
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 50,
+						"fire_rate": 5,
+						"critical_chance": 0.2,
+						"critical_damage": 2.4,
+						"status_chance": 0.10,
+						"multishot": 1
+					}
+				},
+				"incarnon_form_aoe": {
+					"name": "Incarnon Form AoE",
+					"stats": {
+						"damage": 50
+					}
+				}
+			}
+		},
+		{
+			"name": "Braton Vandal",
+			"family": "braton",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 35,
+						"fire_rate": 7.5,
+						"reload_time": 1.75,
+						"critical_chance": 0.16,
+						"critical_damage": 2,
+						"status_chance": 0.16,
+						"multishot": 1,
+						"max_ammo": 550,
+						"magazine_size": 50
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 65,
+						"fire_rate": 4.67,
+						"critical_chance": 0.38,
+						"critical_damage": 3.2,
+						"status_chance": 0.22,
+						"multishot": 1
+					}
+				},
+				"incarnon_form_aoe": {
+					"name": "Incarnon Form AoE",
+					"stats": {
+						"damage": 65
+					}
+				}
+			}
+		},
+		{
+			"name": "Braton Prime",
+			"family": "braton",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 35,
+						"fire_rate": 9.58,
+						"reload_time": 2.15,
+						"critical_chance": 0.12,
+						"critical_damage": 2,
+						"status_chance": 0.26,
+						"multishot": 1,
+						"max_ammo": 600,
+						"magazine_size": 75
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 70,
+						"fire_rate": 5.67,
+						"critical_chance": 0.3,
+						"critical_damage": 3,
+						"status_chance": 0.3,
+						"multishot": 1
+					}
+				}
+			},
+			"incarnon_form_aoe": {
+				"name": "Incarnon Form AoE",
+				"stats": {
+					"damage": 70
+				}
+			}
+		},
+		{
+			"name": "Boltor",
+			"family": "boltor",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 25,
+						"fire_rate": 8.75,
+						"reload_time": 2.6,
+						"critical_chance": 0.1,
+						"critical_damage": 1.8,
+						"status_chance": 0.14,
+						"multishot": 1,
+						"max_ammo": 540,
+						"magazine_size": 60
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form AoE",
+					"stats": {
+						"damage": 4,
+						"fire_rate": 10,
+						"critical_chance": 0.22,
+						"critical_damage": 2.8,
+						"status_chance": 0.0933,
+						"multishot": 3
+					}
+				}
+			}
+		},
+		{
+			"name": "Telos Boltor",
+			"family": "boltor",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 30,
+						"fire_rate": 9.33,
+						"reload_time": 2.4,
+						"critical_chance": 0.3,
+						"critical_damage": 2.4,
+						"status_chance": 0.16,
+						"multishot": 1,
+						"max_ammo": 540,
+						"magazine_size": 90
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 20,
+						"fire_rate": 10.33,
+						"critical_chance": 0.36,
+						"critical_damage": 3.2,
+						"status_chance": 0.1067,
+						"multishot": 3
+					}
+				}
+			}
+		},
+		{
+			"name": "Boltor Prime",
+			"family": "boltor",
+			"forms": {
+				"normal_form": {
+					"name": "Normal Form",
+					"stats": {
+						"damage": 46,
+						"fire_rate": 10,
+						"reload_time": 2.4,
+						"critical_chance": 0.12,
+						"critical_damage": 2,
+						"status_chance": 0.34,
+						"multishot": 1,
+						"max_ammo": 540,
+						"magazine_size": 60
+					}
+				},
+				"incarnon_form": {
+					"name": "Incarnon Form",
+					"stats": {
+						"damage": 24,
+						"fire_rate": 11.33,
+						"critical_chance": 0.24,
+						"critical_damage": 3,
+						"status_chance": 0.2,
+						"multishot": 3
+					}
+				}
+			}
+		}
+	]
+}

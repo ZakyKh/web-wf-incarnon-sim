@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h1>Incarnon Genesis Adapter Upgrade Simulator - <span class="incarnon-type"></span></h1>
+
+<p>This page simulates incarnon genesis upgrade for <span class="incarnon-type"></span> weapon family</p>
+
+<div id="weaponTable">Error: Unknown incarnon adapter compatibility type</div>
+</body>
+
+<script>
+	$(document).ready(function() {
+		var url_params = new URLSearchParams(window.location.search);
+		var weapon_type = url_params.has("type") ? url_params.get("type") : "DefaultWeapon";
+		setWeaponType(weapon_type);
+		$.getJSON('data/data.json', function(json_data) {
+			var weapon_data, incarnon_data;
+			if (weapon_type != "DefaultWeapon") {
+				// [weapon_data, incarnon_data] = parseData(json_data, weapon_type);
+				generateWeaponStatTable(json_data, weapon_type);
+			}
+			// generateTable(weapon_data);
+			// refreshTableValues(weapon_data);
+		});
+	});
+
+	function setWeaponType(weapon_type) {
+		weaponTypeTitle = weapon_type.charAt(0).toUpperCase() + weapon_type.slice(1);
+		$(".incarnon-type").html(weaponTypeTitle);
+	}
+
+	// function parseData(json_data, weapon_type) {
+	// 	const incarnonData = json_data['incarnons_list'][weapon_type];
+	// 	const weaponsData = json_data['weapons_list'].filter(weapon => weapon['family'] == weapon_type);
+
+	// 	var tableData = new Map();
+	// 	var weaponAttributeData = new Map();
+	// 	var weaponList = [];
+
+	// 	weaponsData.forEach(function(weaponData) {
+	// 		weaponCode = encodeWeaponName(weaponData['name']);
+	// 		Object.entries(weaponData['forms']).forEach(function([form_name, attributes]) {
+	// 			if (!weaponAttributeData.has(form_name)) {
+	// 				weaponAttributeData.set(form_name, new Map());
+	// 			}
+	// 			var attrData = weaponAttributeData.get(form_name);
+	// 			attrData.set(weaponCode, attributes);
+	// 			weaponAttributeData.set(form_name, attrData);
+	// 		});
+	// 		nameList.add(weaponCode)
+	// 	});
+
+	// 	tableData.set()
+
+	// 	return [tableData, incarnonData];
+	// }
+
+	// function generateTable(tableData) {
+	// 	const body = document.body
+	// 	const tbl = document.createElement('table');
+
+	// 	console.log(tableData);
+
+	// 	$('#weaponTable').html(tbl.outerHTML);
+	// }
+
+	// function refreshTableValues(tableData) {
+
+	// }
+
+	// function encodeWeaponName(name) {
+	// 	return name.replace(/\s/g,"_")
+	// }
+
+	function generateWeaponStatTable(json_data, weapon_type) {
+		// Init
+		const body = document.body
+		const tbl = document.createElement('table');
+		const incarnonData = json_data['incarnons_list'][weapon_type];
+		const weaponsData = json_data['weapons_list'].filter(weapon => weapon['family'] == weapon_type);
+
+		console.log(weaponsData);
+
+		// Title
+		var tr = tbl.insertRow();
+		var td = tr.insertCell();
+		var txtNode = document.createTextNode('Name');
+		td.style.textAlign = 'center';
+		td.style.fontWeight = 'bold';
+		td.appendChild(txtNode);
+		for (var i = 0; i < weaponsData.length; i++) {
+			td = tr.insertCell();
+			txtNode = document.createTextNode(weaponsData[i]['name']);
+			td.style.textAlign = 'center';
+			td.style.fontWeight = 'bold';
+			td.appendChild(txtNode);
+		}
+
+		const formsAndAttributes = [
+			new Map([
+				["key", "normal_form"],
+				["name", "Normal Form"],
+				["attributes", [ // [ key, name to display, transformation function to apply from json data to displayed value in string ]
+					["damage",          "Damage",          (val) => val ],
+					["fire_rate",       "Fire Rate",       (val) => val ],
+					["critical_chance", "Critical Chance", (val) => `${(val * 100).toFixed(2)}%` ],
+					["critical_damage", "Critical Damage", (val) => `${val}x` ],
+					["status_chance",   "Status Chance",   (val) => `${(val * 100).toFixed(2)}%` ],
+					["multishot",       "Multishot",       (val) => val ]
+				]]
+			]),
+			new Map([
+				["key", "incarnon_form"],
+				["name", "Incarnon Form"],
+				["attributes", [
+					["damage",          "Damage",          (val) => val ],
+					["fire_rate",       "Fire Rate",       (val) => val ],
+					["critical_chance", "Critical Chance", (val) => `${(val * 100).toFixed(2)}%` ],
+					["critical_damage", "Critical Damage", (val) => `${val}x` ],
+					["status_chance",   "Status Chance",   (val) => `${(val * 100).toFixed(2)}%` ],
+					["multishot",       "Multishot",       (val) => val ]
+				]]
+			]),
+			new Map([
+				["key", "incarnon_form_aoe"],
+				["name", "Incarnon Form AoE"],
+				["attributes", [
+					["damage",          "Damage",          (val) => val ]
+				]]
+			])
+		];
+		// const attributeFormatter = new Map([
+		// 	["damage",          new Map([ ["name", "Damage"],          [ "formatter", (val) => val ]                          ],
+		// 	["fire_rate",       new Map([ ["name", "Fire Rate"],       [ "formatter", (val) => val ]                          ],
+		// 	["critical_chance", new Map([ ["name", "Critical Chance"], [ "formatter", (val) => `${(val * 100).toFixed(2)}%` ] ],
+		// 	["critical_damage", new Map([ ["name", "Critical Damage"], [ "formatter", (val) => `${val}x` ]                    ],
+		// 	["status_chance",   new Map([ ["name", "Status Chance"],   [ "formatter", (val) => `${(val * 100).toFixed(2)}%` ] ],
+		// 	["multishot",       new Map([ ["name", "Multishot"],       [ "formatter", (val) => val                            ] ]
+		// ]);
+
+		for (var i = 0; i < formsAndAttributes.length; i++) {
+			const form = formsAndAttributes[i];
+
+			// Form separator
+			tr = tbl.insertRow();
+			td = tr.insertCell();
+			txtNode = document.createTextNode(form.get('name'));
+			td.setAttribute('colspan', weaponsData.length + 1);
+			td.style.textAlign = 'center';
+			td.style.fontWeight = 'bold';
+			td.style.width = '200px';
+			td.appendChild(txtNode);
+
+			for (var j = 0; j < form.get('attributes').length; j++) {
+				const attribute = form.get('attributes')[j];
+				const attributeKey = attribute[0];
+				const attributeName = attribute[1];
+				const attributeTransformer = attribute[2];
+				tr = tbl.insertRow();
+				td = tr.insertCell();
+				txtNode = document.createTextNode(attribute[1]);
+				td.style.textAlign = 'center';
+				td.style.width = '200px';
+				td.appendChild(txtNode);
+				for (var k = 0; k < weaponsData.length; k++) {
+					const weaponData = weaponsData[k];
+					if (!weaponData.hasOwnProperty(form.get('key'))) {
+						console.log("aylmao");
+						console.log(form.get('key'));
+						console.log(weaponData);
+						continue;
+					}
+
+					td = tr.insertCell();
+					const val = attributeTransformer(weaponData[form.get('key')][attributeKey])
+					txtNode = document.createTextNode(val);
+					td.style.textAlign = 'center';
+					td.style.width = '200px';
+					td.appendChild(txtNode);
+				}
+			}
+		}
+
+		// // Normal form separator
+
+		// // Damage
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Damage');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	console.log(weaponsData[i]);
+		// 	txtNode = document.createTextNode(weaponsData[i]['normal_form']['damage']);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Fire rate
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Fire Rate');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	txtNode = document.createTextNode(weaponsData[i]['normal_form']['fire_rate']);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Crit chance
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Critical Chance');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	var crit_chance = (weaponsData[i]['normal_form']['critical_chance'] * 100);
+		// 	txtNode = document.createTextNode(`${crit_chance}%`);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Crit damage
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Critical Damage');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	txtNode = document.createTextNode(`${weaponsData[i]['normal_form']['critical_damage']}x`);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Status Chance
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Status Chance');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	var status_chance = (weaponsData[i]['normal_form']['status_chance'] * 100);
+		// 	txtNode = document.createTextNode(`${crit_chance}%`);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Multishot
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Multishot');
+		// td.appendChild(txtNode);
+		// for (var i = 0; i < weaponsData.length; i++) {
+		// 	td = tr.insertCell();
+		// 	var status_chance = (weaponsData[i]['normal_form']['multishot']);
+		// 	txtNode = document.createTextNode(`${crit_chance}%`);
+		// 	td.appendChild(txtNode);
+		// }
+
+		// // Incarnon form separator
+		// tr = tbl.insertRow();
+		// td = tr.insertCell();
+		// txtNode = document.createTextNode('Incarnon Form');
+		// td.appendChild(txtNode);
+
+		// Apply
+		$('#weaponTable').html(tbl.outerHTML);
+	}
+</script>
+</html>
