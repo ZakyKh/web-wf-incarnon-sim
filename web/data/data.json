@@ -389,6 +389,106 @@
 			"incarnon_form_aoe": {
 				"damage": 200
 			}
+		},
+		{
+			"name": "Magistar",
+			"family": "magistar",
+			"melee_form": {
+				"damage": 210,
+				"attack_speed": 0.83,
+				"critical_chance": 0.2,
+				"critical_damage": 2,
+				"status_chance": 0.1
+			}
+		},
+		{
+			"name": "Sancti Magistar",
+			"family": "magistar",
+			"melee_form": {
+				"damage": 240,
+				"attack_speed": 1.0,
+				"critical_chance": 0.3,
+				"critical_damage": 2,
+				"status_chance": 0.2
+			}
+		},
+		{
+			"name": "Latron",
+			"family": "latron",
+			"normal_form": {
+				"damage": 55,
+				"fire_rate": 4.17,
+				"reload_time": 2.4,
+				"critical_chance": 0.12,
+				"critical_damage": 2,
+				"status_chance": 0.12,
+				"multishot": 1,
+				"max_ammo": 540,
+				"magazine_size": 15
+			},
+			"incarnon_form": {
+				"damage": 50,
+				"fire_rate": 3.33,
+				"critical_chance": 0.32,
+				"critical_damage": 3,
+				"status_chance": 0.24,
+				"multishot": 1
+			},
+			"incarnon_form_aoe": {
+				"damage": 80
+			}
+		},
+		{
+			"name": "Latron Wraith",
+			"family": "latron",
+			"normal_form": {
+				"damage": 62,
+				"fire_rate": 5,
+				"reload_time": 2.4,
+				"critical_chance": 0.26,
+				"critical_damage": 2.8,
+				"status_chance": 0.14,
+				"multishot": 1,
+				"max_ammo": 540,
+				"magazine_size": 15
+			},
+			"incarnon_form": {
+				"damage": 50,
+				"fire_rate": 3.67,
+				"critical_chance": 0.48,
+				"critical_damage": 3.4,
+				"status_chance": 0.28,
+				"multishot": 1
+			},
+			"incarnon_form_aoe": {
+				"damage": 100
+			}
+		},
+		{
+			"name": "Latron Prime",
+			"family": "latron",
+			"normal_form": {
+				"damage": 90,
+				"fire_rate": 4.17,
+				"reload_time": 2.4,
+				"critical_chance": 0.22,
+				"critical_damage": 2.8,
+				"status_chance": 0.26,
+				"multishot": 1,
+				"max_ammo": 540,
+				"magazine_size": 15
+			},
+			"incarnon_form": {
+				"damage": 50,
+				"fire_rate": 3.33,
+				"critical_chance": 0.44,
+				"critical_damage": 3.4,
+				"status_chance": 0.3,
+				"multishot": 1
+			},
+			"incarnon_form_aoe": {
+				"damage": 140
+			}
 		}
 	]
 }
