@@ -133,7 +133,17 @@
 				["attributes", [
 					["damage",          "Damage",          (val) => val ]
 				]]
-			])
+			]),new Map([
+				["key", "melee_form"],
+				["name", "Normal Melee Form"],
+				["attributes", [ // [ key, name to display, transformation function to apply from json data to displayed value in string ]
+					["damage",          "Damage",          (val) => val ],
+					["attack_speed",    "Attack Speed",    (val) => `${val}x animation speed` ],
+					["critical_chance", "Critical Chance", (val) => `${(val * 100).toFixed(2)}%` ],
+					["critical_damage", "Critical Damage", (val) => `${val}x` ],
+					["status_chance",   "Status Chance",   (val) => `${(val * 100).toFixed(2)}%` ]
+				]]
+			]),
 		];
 		// const attributeFormatter = new Map([
 		// 	["damage",          new Map([ ["name", "Damage"],          [ "formatter", (val) => val ]                          ],
